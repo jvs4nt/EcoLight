@@ -11,4 +11,5 @@
     <string name="nao_tem_uma_conta">Não tem uma conta?</string>
     <string name="registre_se_ja">Registre-se já!</string>
     <string name="back_button_description">botão para voltar a tela anterior</string>
+    <string name="registrar">Registrar</string>
 </resources>
