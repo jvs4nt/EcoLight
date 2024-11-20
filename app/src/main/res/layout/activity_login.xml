@@ -36,7 +36,7 @@
         app:srcCompat="@drawable/login_image_resized" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/goBackButton"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:backgroundTint="@android:color/transparent"

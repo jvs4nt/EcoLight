@@ -47,7 +47,7 @@
         app:srcCompat="@drawable/croped_intro_image" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/startButton"
         android:layout_width="381dp"
         android:layout_height="68dp"
         android:backgroundTint="#6CC51D"
