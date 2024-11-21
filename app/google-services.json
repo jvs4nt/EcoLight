@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "381641825080",
+    "project_id": "ecolight-b74d6",
+    "storage_bucket": "ecolight-b74d6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381641825080:android:a8ef5e99cc8f9888e7bfcd",
+        "android_client_info": {
+          "package_name": "org.ecolight"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrpsL9vqoCH8CAZFuCMm7J-SvgF126cjs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

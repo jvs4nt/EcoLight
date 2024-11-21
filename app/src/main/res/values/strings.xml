@@ -19,4 +19,5 @@
     <string name="categoria">Categoria</string>
     <string name="tempo_utilizado_em_minutos">Tempo utilizado (em minutos)</string>
     <string name="nome_do_dispositivo">Nome do dispositivo</string>
+    <string name="usuario_nao_encontrado">Usuário não encontrado</string>
 </resources>
