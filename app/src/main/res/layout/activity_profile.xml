@@ -22,16 +22,16 @@
 
         <Button
             android:id="@+id/editarPerfilButton"
-            android:layout_width="381dp"
-            android:layout_height="68dp"
+            android:layout_width="361dp"
+            android:layout_height="71dp"
             android:backgroundTint="#6CC51D"
             android:text="Editar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.36"
+            app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.818" />
+            app:layout_constraintVertical_bias="0.808" />
 
         <EditText
             android:id="@+id/nameEditText"
@@ -53,16 +53,16 @@
 
         <Button
             android:id="@+id/logoutButton"
-            android:layout_width="381dp"
+            android:layout_width="361dp"
             android:layout_height="68dp"
             android:backgroundTint="#FF0303"
             android:text="Sair"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.36"
+            app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.969" />
+            app:layout_constraintVertical_bias="0.968" />
 
         <EditText
             android:id="@+id/telefoneEditText"

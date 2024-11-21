@@ -20,4 +20,8 @@
     <string name="tempo_utilizado_em_minutos">Tempo utilizado (em minutos)</string>
     <string name="nome_do_dispositivo">Nome do dispositivo</string>
     <string name="usuario_nao_encontrado">Usuário não encontrado</string>
+    <string name="registro_erro">Erro ao registrar</string>
+    <string name="registro_sucesso">Sucesso ao registrar</string>
+    <string name="senhas_nao_coincidem">As senhas não coincidem</string>
+    <string name="preencha_todos_campos">Por favor, preencha todos os campos</string>
 </resources>

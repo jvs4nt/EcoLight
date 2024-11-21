@@ -9,6 +9,17 @@
     android:backgroundTint="#F4F5F9"
     tools:context=".RegisterActivity">
 
+    <TextView
+        android:id="@+id/errorTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.038"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.584" />
+
     <EditText
         android:id="@+id/senhaEditText"
         android:layout_width="377dp"
@@ -25,7 +36,7 @@
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.746" />
+        app:layout_constraintVertical_bias="0.76" />
 
     <Button
         android:id="@+id/registerButton"
@@ -81,7 +92,7 @@
         app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.526" />
+        app:layout_constraintVertical_bias="0.52" />
 
     <TextView
         android:id="@+id/textView6"
@@ -94,7 +105,7 @@
         app:layout_constraintHorizontal_bias="0.207"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.566" />
+        app:layout_constraintVertical_bias="0.545" />
 
     <EditText
         android:id="@+id/emailEditText"
@@ -112,10 +123,10 @@
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.643" />
+        app:layout_constraintVertical_bias="0.66" />
 
     <EditText
-        android:id="@+id/senhaEditText"
+        android:id="@+id/confirmarSenhaEditText"
         android:layout_width="377dp"
         android:layout_height="60dp"
         android:background="#FFFFFF"
@@ -130,6 +141,6 @@
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
+        app:layout_constraintVertical_bias="0.861" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
