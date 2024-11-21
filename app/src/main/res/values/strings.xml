@@ -15,4 +15,8 @@
     <string name="lembrar_de_mim">Lembrar de mim</string>
     <string name="ol_o_que_deseja_fazer_agora">Olá! O que deseja fazer agora?</string>
     <string name="meta_de_consumo_mensal">Meta de consumo mensal:</string>
+    <string name="salvar">Salvar</string>
+    <string name="categoria">Categoria</string>
+    <string name="tempo_utilizado_em_minutos">Tempo utilizado (em minutos)</string>
+    <string name="nome_do_dispositivo">Nome do dispositivo</string>
 </resources>

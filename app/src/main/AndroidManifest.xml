@@ -13,6 +13,9 @@
         android:theme="@style/Theme.EcoLight"
         tools:targetApi="31">
         <activity
+            android:name=".ConsumptionRegisterActivity"
+            android:exported="false" />
+        <activity
             android:name=".HomeActivity"
             android:exported="false" />
         <activity

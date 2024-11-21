@@ -2,19 +2,19 @@ package org.ecolight
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class HomeActivity : AppCompatActivity() {
+class ConsumptionRegisterActivity : AppCompatActivity() {
     private lateinit var goBackMenuButton: ImageButton
-    private lateinit var registrarConsumoButton: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_consumption_register)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -22,15 +22,9 @@ class HomeActivity : AppCompatActivity() {
         }
 
         goBackMenuButton = findViewById(R.id.goBackMenuButton)
-        registrarConsumoButton = findViewById(R.id.registrarConsumoButton)
 
         goBackMenuButton.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
-
-        registrarConsumoButton.setOnClickListener {
-            val intent = Intent(this, ConsumptionRegisterActivity::class.java)
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }
