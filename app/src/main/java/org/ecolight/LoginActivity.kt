@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 class LoginActivity : AppCompatActivity() {
     private lateinit var goBackButton: ImageButton
     private lateinit var registerTextView: TextView
+    private lateinit var  loginButton: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -25,6 +26,7 @@ class LoginActivity : AppCompatActivity() {
 
         goBackButton = findViewById(R.id.goBackButton)
         registerTextView = findViewById(R.id.registerTextView)
+        loginButton = findViewById(R.id.loginButton)
 
         goBackButton.setOnClickListener {
             val intent = Intent(this, IntroActivity::class.java)
@@ -33,6 +35,11 @@ class LoginActivity : AppCompatActivity() {
 
         registerTextView.setOnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
+        }
+
+        loginButton.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }
