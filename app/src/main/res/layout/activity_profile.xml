@@ -9,9 +9,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainLayout"
-        android:layout_width="406dp"
-        android:layout_height="585dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="400dp"
+        android:layout_height="573dp"
         android:background="#FFFFFF"
         android:backgroundTint="#F4F5F9"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,7 +18,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBar"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.013">
 
         <Button
             android:id="@+id/salvarPerfilButton"
@@ -102,7 +101,8 @@
         android:layout_height="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainLayout">
 
         <ImageButton
             android:id="@+id/homeButton"
