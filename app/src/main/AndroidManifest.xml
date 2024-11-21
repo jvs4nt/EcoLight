@@ -13,6 +13,12 @@
         android:theme="@style/Theme.EcoLight"
         tools:targetApi="31">
         <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListDevicesActivity"
+            android:exported="false" />
+        <activity
             android:name=".ConsumptionListActivity"
             android:exported="false" />
         <activity

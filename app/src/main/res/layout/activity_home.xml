@@ -19,7 +19,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/listaDeConsumosTextView"
+            android:id="@+id/editarPerfilTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins"
@@ -152,7 +152,7 @@
             app:srcCompat="@drawable/box2" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/meuPerfilButton"
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:backgroundTint="@android:color/transparent"
@@ -166,7 +166,7 @@
             app:srcCompat="@drawable/box3" />
 
         <ImageButton
-            android:id="@+id/imageButton5"
+            android:id="@+id/listaDispositivosButton"
             android:layout_width="180dp"
             android:layout_height="180dp"
             android:backgroundTint="@android:color/transparent"

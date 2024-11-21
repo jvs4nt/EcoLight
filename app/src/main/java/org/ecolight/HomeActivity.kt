@@ -15,6 +15,8 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var textView9: TextView
     private lateinit var profileButton: ImageButton
     private lateinit var meuConsumoButton: ImageButton
+    private lateinit var meuPerfilButton: ImageButton
+    private lateinit var listaDispositivosButton: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +33,8 @@ class HomeActivity : AppCompatActivity() {
         textView9 = findViewById(R.id.textView9)
         profileButton = findViewById(R.id.profileButton)
         meuConsumoButton = findViewById(R.id.meuConsumoButton)
+        meuPerfilButton = findViewById(R.id.meuPerfilButton)
+        listaDispositivosButton = findViewById(R.id.listaDispositivosButton)
 
         goBackMenuButton.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
@@ -54,6 +58,16 @@ class HomeActivity : AppCompatActivity() {
 
         meuConsumoButton.setOnClickListener {
             val intent = Intent(this, ConsumptionListActivity::class.java)
+            startActivity(intent)
+        }
+
+        meuPerfilButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        listaDispositivosButton.setOnClickListener {
+            val intent = Intent(this, ListDevicesActivity::class.java)
             startActivity(intent)
         }
     }

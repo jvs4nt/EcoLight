@@ -2,39 +2,38 @@ package org.ecolight
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class ProfileActivity : AppCompatActivity() {
-    private lateinit var goBackMenuButton: ImageButton
+class ListDevicesActivity : AppCompatActivity() {
     private lateinit var homeButton: ImageButton
+    private lateinit var menuButton: ImageButton
     private lateinit var profileButton: ImageButton
-    private lateinit var editarPerfilButton: Button
+    private lateinit var goBackMenuButton: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_profile)
+        setContentView(R.layout.activity_list_devices)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        goBackMenuButton = findViewById(R.id.goBackMenuButton)
         homeButton = findViewById(R.id.homeButton)
+        menuButton = findViewById(R.id.menuButton)
         profileButton = findViewById(R.id.profileButton)
-        editarPerfilButton = findViewById(R.id.editarPerfilButton)
+        goBackMenuButton = findViewById(R.id.goBackMenuButton)
 
-        goBackMenuButton.setOnClickListener {
+        homeButton.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
 
-        homeButton.setOnClickListener {
+        menuButton.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
@@ -44,8 +43,8 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        editarPerfilButton.setOnClickListener {
-            val intent = Intent(this, EditProfileActivity::class.java)
+        goBackMenuButton.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
         }
     }
