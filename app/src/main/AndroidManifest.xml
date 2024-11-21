@@ -13,6 +13,9 @@
         android:theme="@style/Theme.EcoLight"
         tools:targetApi="31">
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
             android:name=".GoalRegisterActivity"
             android:exported="false" />
         <activity

@@ -11,6 +11,7 @@ import androidx.core.view.WindowInsetsCompat
 
 class ConsumptionRegisterActivity : AppCompatActivity() {
     private lateinit var goBackMenuButton: ImageButton
+    private lateinit var profileButton: ImageButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -22,9 +23,15 @@ class ConsumptionRegisterActivity : AppCompatActivity() {
         }
 
         goBackMenuButton = findViewById(R.id.goBackMenuButton)
+        profileButton = findViewById(R.id.profileButton)
 
         goBackMenuButton.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+        profileButton.setOnClickListener {
+            val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
         }
     }
