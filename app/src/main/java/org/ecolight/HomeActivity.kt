@@ -4,42 +4,53 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
+import org.ecolight.api.RetrofitClient
+import org.ecolight.models.Meta
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var registrarConsumoButton: ImageButton
-    private lateinit var textView9: TextView
+    private lateinit var titleMetaTextView: TextView
     private lateinit var profileButton: ImageButton
     private lateinit var meuConsumoButton: ImageButton
     private lateinit var meuPerfilButton: ImageButton
     private lateinit var listaDispositivosButton: ImageButton
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_home)
+        auth = FirebaseAuth.getInstance()
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         registrarConsumoButton = findViewById(R.id.registrarConsumoButton)
-        textView9 = findViewById(R.id.textView9)
+        titleMetaTextView = findViewById(R.id.titleMetaTextView)
         profileButton = findViewById(R.id.profileButton)
         meuConsumoButton = findViewById(R.id.meuConsumoButton)
         meuPerfilButton = findViewById(R.id.meuPerfilButton)
         listaDispositivosButton = findViewById(R.id.listaDispositivosButton)
-
 
         registrarConsumoButton.setOnClickListener {
             val intent = Intent(this, ConsumptionRegisterActivity::class.java)
             startActivity(intent)
         }
 
-        textView9.setOnClickListener {
+        titleMetaTextView.setOnClickListener {
             val intent = Intent(this, GoalRegisterActivity::class.java)
             startActivity(intent)
         }
@@ -63,5 +74,32 @@ class HomeActivity : AppCompatActivity() {
             val intent = Intent(this, ListDevicesActivity::class.java)
             startActivity(intent)
         }
+
+        fetchUserGoal()
+    }
+
+    private fun fetchUserGoal() {
+        val userEmail = auth.currentUser?.email
+
+        if (userEmail.isNullOrEmpty()) {
+            titleMetaTextView.text = "Meta não definida"
+            return
+        }
+
+        RetrofitClient.apiService.getUserMeta(userEmail).enqueue(object : Callback<Meta> {
+            override fun onResponse(call: Call<Meta>, response: Response<Meta>) {
+                if (response.isSuccessful) {
+                    val meta = response.body()
+                    titleMetaTextView.text = meta?.valorMeta?.toString() ?: "Meta não definida"
+                } else {
+                    titleMetaTextView.text = "Erro ao carregar meta"
+                }
+            }
+
+            override fun onFailure(call: Call<Meta>, t: Throwable) {
+                Toast.makeText(this@HomeActivity, "Erro de conexão: ${t.message}", Toast.LENGTH_SHORT).show()
+                titleMetaTextView.text = "Erro ao carregar meta"
+            }
+        })
     }
 }
