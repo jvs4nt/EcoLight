@@ -13,7 +13,7 @@ import org.ecolight.R
 import org.ecolight.models.Device
 
 class DevicesAdapter(
-    private val devices: MutableList<Device> // Usando uma lista mutável para atualizações dinâmicas
+    private val devices: MutableList<Device>
 ) : RecyclerView.Adapter<DevicesAdapter.DeviceViewHolder>() {
 
     class DeviceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -34,7 +34,6 @@ class DevicesAdapter(
         holder.deviceName.text = device.name
         holder.devicePower.text = "Power: ${device.power}"
 
-        // Configurar o clique do botão de apagar
         holder.deleteButton.setOnClickListener {
             deleteDeviceFromFirebase(device, position)
         }
@@ -58,12 +57,10 @@ class DevicesAdapter(
         device.id?.let { id ->
             database.child(id).removeValue()
                 .addOnSuccessListener {
-                    // Remover o item da lista local e notificar o adapter
                     devices.removeAt(position)
                     notifyItemRemoved(position)
                 }
                 .addOnFailureListener { e ->
-                    // Tratar erros (exibir Toast ou log)
                     e.printStackTrace()
                 }
         }

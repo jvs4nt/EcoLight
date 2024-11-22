@@ -37,7 +37,6 @@ class EditDeviceActivity : AppCompatActivity() {
             insets
         }
 
-        // Inicializar componentes
         nameEditText = findViewById(R.id.nameEditText)
         powerEditText = findViewById(R.id.powerEditText)
         saveButton = findViewById(R.id.saveButton)
@@ -46,24 +45,19 @@ class EditDeviceActivity : AppCompatActivity() {
         menuButton = findViewById(R.id.menuButton)
         profileButton = findViewById(R.id.profileButton)
 
-        // Inicializar Firebase Database
         database = FirebaseDatabase.getInstance("https://ecolight-b74d6-default-rtdb.firebaseio.com/").getReference("devices")
 
-        // Receber os dados do dispositivo da Intent
         deviceId = intent.getStringExtra("DEVICE_ID")
         val deviceName = intent.getStringExtra("DEVICE_NAME")
         val devicePower = intent.getStringExtra("DEVICE_POWER")
 
-        // Preencher os campos com os dados recebidos
         nameEditText.setText(deviceName)
         powerEditText.setText(devicePower)
 
-        // Configurar botão de salvar
         saveButton.setOnClickListener {
             saveEditedDevice()
         }
 
-        // Configurar botões de navegação
         goBackMenuButton.setOnClickListener { finish() }
         homeButton.setOnClickListener { startActivity(Intent(this, HomeActivity::class.java)) }
         menuButton.setOnClickListener { startActivity(Intent(this, HomeActivity::class.java)) }
@@ -79,13 +73,12 @@ class EditDeviceActivity : AppCompatActivity() {
             return
         }
 
-        // Atualizar os dados no Firebase
         deviceId?.let { id ->
             val updatedDevice = Device(id = id, name = name, power = power)
             database.child(id).setValue(updatedDevice)
                 .addOnSuccessListener {
                     Toast.makeText(this, "Dispositivo atualizado com sucesso", Toast.LENGTH_SHORT).show()
-                    finish() // Voltar para a tela anterior
+                    finish()
                 }
                 .addOnFailureListener { e ->
                     Toast.makeText(this, "Erro ao atualizar: ${e.message}", Toast.LENGTH_SHORT).show()

@@ -37,21 +37,17 @@ class CreateDeviceActivity : AppCompatActivity() {
             insets
         }
 
-        // Inicializar botões de navegação
         homeButton = findViewById(R.id.homeButton)
         menuButton = findViewById(R.id.menuButton)
         profileButton = findViewById(R.id.profileButton)
         goBackMenuButton = findViewById(R.id.goBackMenuButton)
 
-        // Inicializar campos de texto e botão de salvar
         nameEditText = findViewById(R.id.nameEditText)
         powerEditText = findViewById(R.id.powerEditText)
         saveButton = findViewById(R.id.saveButton)
 
-        // Inicializar Firebase Database
         database = FirebaseDatabase.getInstance("https://ecolight-b74d6-default-rtdb.firebaseio.com/").getReference("devices")
 
-        // Configurar cliques nos botões de navegação
         homeButton.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
         }
@@ -65,10 +61,9 @@ class CreateDeviceActivity : AppCompatActivity() {
         }
 
         goBackMenuButton.setOnClickListener {
-            finish() // Finaliza a atividade atual para voltar
+            finish()
         }
 
-        // Configurar botão de salvar
         saveButton.setOnClickListener {
             saveDeviceToFirebase()
         }
@@ -83,19 +78,16 @@ class CreateDeviceActivity : AppCompatActivity() {
             return
         }
 
-        // Criar um novo dispositivo
         val newDevice = Device(
-            id = database.push().key, // Gera um ID único
+            id = database.push().key,
             name = name,
             power = power
         )
 
-        // Salvar no Firebase
         newDevice.id?.let {
             database.child(it).setValue(newDevice)
                 .addOnSuccessListener {
                     Toast.makeText(this, "Dispositivo salvo com sucesso", Toast.LENGTH_SHORT).show()
-                    // Limpar os campos após salvar
                     nameEditText.text.clear()
                     powerEditText.text.clear()
                 }

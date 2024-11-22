@@ -65,28 +65,25 @@ class ListDevicesActivity : AppCompatActivity() {
         devicesRecyclerView = findViewById(R.id.devicesRecyclerView)
         devicesRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Inicializar referência ao Firebase
         database = FirebaseDatabase.getInstance().getReference("devices")
 
-        // Carregar dispositivos do Firebase
         loadDevicesFromFirebase()
     }
 
     private fun loadDevicesFromFirebase() {
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                devicesList.clear() // Limpa a lista antes de adicionar os novos dados
+                devicesList.clear()
                 for (deviceSnapshot in snapshot.children) {
-                    val device = deviceSnapshot.getValue(Device::class.java) // Converter para objeto Device
+                    val device = deviceSnapshot.getValue(Device::class.java)
                     device?.let {
-                        devicesList.add(it) // Adiciona o dispositivo à lista
+                        devicesList.add(it)
                     }
                 }
-                devicesRecyclerView.adapter = DevicesAdapter(devicesList) // Atualiza o adapter com os dados
+                devicesRecyclerView.adapter = DevicesAdapter(devicesList)
             }
 
             override fun onCancelled(error: DatabaseError) {
-                // Tratar erros ao acessar o banco
                 error.toException().printStackTrace()
             }
         })

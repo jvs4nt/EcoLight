@@ -43,15 +43,21 @@ class ConsumptionAdapter(
             database.child(deviceId).get().addOnSuccessListener { snapshot ->
                 val power = snapshot.child("power").getValue(String::class.java)
                 holder.powerTextView.text = "Potência: ${power ?: "Não disponível"}"
+
+                val powerInWatts = power?.replace("W", "")?.toDoubleOrNull() ?: 0.0
+                val powerInKw = powerInWatts / 1000
+                val timeInHours = (consumption.timeUsed?.toDoubleOrNull() ?: 0.0) / 60
+                val price = timeInHours * powerInKw * 0.50 // Tarifa fixa de 0.50
+
+                holder.priceTextView.text = String.format("Preço: R$ %.2f", price)
             }.addOnFailureListener {
                 holder.powerTextView.text = "Potência: Não disponível"
+                holder.priceTextView.text = "Preço: Não disponível"
             }
         } else {
             holder.powerTextView.text = "Potência: Não disponível"
+            holder.priceTextView.text = "Preço: Não disponível"
         }
-
-        val timeInMinutes = consumption.timeUsed?.toDoubleOrNull() ?: 0.0
-        holder.priceTextView.text = "Preço: Calcular"
 
         holder.editButton.setOnClickListener {
             val context = holder.itemView.context
