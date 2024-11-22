@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
 class ConsumptionRegisterActivity : AppCompatActivity() {
@@ -20,6 +21,7 @@ class ConsumptionRegisterActivity : AppCompatActivity() {
     private lateinit var homeButton: ImageButton
     private lateinit var menuButton: ImageButton
 
+    private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     private val deviceNames = mutableListOf<String>()
     private val deviceIds = mutableListOf<String>()
@@ -27,6 +29,7 @@ class ConsumptionRegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        auth = FirebaseAuth.getInstance()
         setContentView(R.layout.activity_consumption_register)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -90,6 +93,14 @@ class ConsumptionRegisterActivity : AppCompatActivity() {
     }
 
     private fun saveConsumptionData() {
+        val currentUser = auth.currentUser
+        val email = currentUser?.email
+
+        if (email == null) {
+            Toast.makeText(this, "Usuário não autenticado!", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val name = nameEditText.text.toString().trim()
         val timeUsed = timeUsedEditText.text.toString().trim()
         val selectedDevicePosition = categorySpinner.selectedItemPosition
@@ -109,15 +120,17 @@ class ConsumptionRegisterActivity : AppCompatActivity() {
             "deviceName" to selectedDeviceName
         )
 
+        val sanitizedEmail = email.replace(".", ",")
         val consumptionDatabase = FirebaseDatabase.getInstance().getReference("consumption")
-        consumptionDatabase.push().setValue(consumptionData)
+        consumptionDatabase.child(sanitizedEmail).push().setValue(consumptionData)
             .addOnSuccessListener {
-                Toast.makeText(this, "Consumo registrado com sucesso", Toast.LENGTH_SHORT).show()
-                startActivity(Intent(this, ConsumptionListActivity::class.java))
-                finish()
+                Toast.makeText(this, "Consumo salvo com sucesso", Toast.LENGTH_SHORT).show()
+                nameEditText.text.clear()
+                timeUsedEditText.text.clear()
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Erro ao registrar consumo: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Erro ao salvar consumo: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
 }

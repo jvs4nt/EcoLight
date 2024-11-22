@@ -4,13 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import org.ecolight.adapters.ConsumptionAdapter
 import org.ecolight.models.Consumption
 
@@ -23,12 +28,14 @@ class ConsumptionListActivity : AppCompatActivity() {
     private lateinit var consumptionRecyclerView: RecyclerView
     private lateinit var totalTextView: TextView
     private lateinit var valorImpostoTextView: TextView
+    private lateinit var auth: FirebaseAuth
 
     private val consumptions = mutableListOf<Consumption>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        auth = FirebaseAuth.getInstance()
         setContentView(R.layout.activity_consumption_list)
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -56,9 +63,18 @@ class ConsumptionListActivity : AppCompatActivity() {
     }
 
     private fun loadConsumptionsFromFirebase() {
+        val currentUser = auth.currentUser
+        val email = currentUser?.email
+
+        if (email == null) {
+            Toast.makeText(this, "Usuário não autenticado!", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val sanitizedEmail = email.replace(".", ",")
         val database = FirebaseDatabase.getInstance().getReference("consumption")
-        database.addValueEventListener(object : com.google.firebase.database.ValueEventListener {
-            override fun onDataChange(snapshot: com.google.firebase.database.DataSnapshot) {
+        database.child(sanitizedEmail).addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
                 consumptions.clear()
 
                 for (consumptionSnapshot in snapshot.children) {
@@ -74,10 +90,12 @@ class ConsumptionListActivity : AppCompatActivity() {
                 calculateAndDisplayTotals()
             }
 
-            override fun onCancelled(error: com.google.firebase.database.DatabaseError) {
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@ConsumptionListActivity, "Erro ao carregar dados!", Toast.LENGTH_SHORT).show()
             }
         })
     }
+
 
     private fun calculateAndDisplayTotals() {
         var total = 0.0

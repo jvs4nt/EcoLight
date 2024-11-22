@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -28,11 +29,13 @@ class EditConsumptionActivity : AppCompatActivity() {
     private var consumptionId: String? = null
     private var selectedDeviceId: String? = null
     private var selectedDeviceName: String? = null
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_edit_consumption)
+        auth = FirebaseAuth.getInstance()
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -111,6 +114,16 @@ class EditConsumptionActivity : AppCompatActivity() {
     }
 
     private fun saveEditedConsumption() {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        val email = currentUser?.email
+
+        if (email == null) {
+            Toast.makeText(this, "Usuário não autenticado!", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val sanitizedEmail = email.replace(".", ",")
+
         val name = nameEditText.text.toString().trim()
         val timeUsed = timeUsedEditText.text.toString().trim()
         val selectedDevicePosition = categorySpinner.selectedItemPosition
@@ -132,7 +145,7 @@ class EditConsumptionActivity : AppCompatActivity() {
 
         consumptionId?.let { id ->
             val consumptionDatabase = FirebaseDatabase.getInstance().getReference("consumption")
-            consumptionDatabase.child(id).updateChildren(updatedConsumption)
+            consumptionDatabase.child(sanitizedEmail).child(id).updateChildren(updatedConsumption)
                 .addOnSuccessListener {
                     Toast.makeText(this, "Consumo atualizado com sucesso", Toast.LENGTH_SHORT).show()
                     startActivity(Intent(this, ConsumptionListActivity::class.java))
@@ -143,4 +156,5 @@ class EditConsumptionActivity : AppCompatActivity() {
                 }
         }
     }
+
 }

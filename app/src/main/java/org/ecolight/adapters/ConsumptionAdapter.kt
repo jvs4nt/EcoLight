@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import org.ecolight.EditConsumptionActivity
 import org.ecolight.R
@@ -71,18 +73,30 @@ class ConsumptionAdapter(
         }
 
         holder.deleteButton.setOnClickListener {
+            val currentUser = FirebaseAuth.getInstance().currentUser
+            val email = currentUser?.email
+
+            if (email == null) {
+                Toast.makeText(holder.itemView.context, "Usuário não autenticado!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            val sanitizedEmail = email.replace(".", ",")
             val database = FirebaseDatabase.getInstance().getReference("consumption")
+
             consumption.id?.let { id ->
-                database.child(id).removeValue()
+                database.child(sanitizedEmail).child(id).removeValue()
                     .addOnSuccessListener {
                         consumptions.removeAt(position)
                         notifyItemRemoved(position)
+                        Toast.makeText(holder.itemView.context, "Consumo apagado com sucesso!", Toast.LENGTH_SHORT).show()
                     }
                     .addOnFailureListener { e ->
-                        e.printStackTrace()
+                        Toast.makeText(holder.itemView.context, "Erro ao apagar consumo: ${e.message}", Toast.LENGTH_SHORT).show()
                     }
             }
         }
+
     }
 
     override fun getItemCount(): Int = consumptions.size
