@@ -27,4 +27,5 @@
     <string name="potencia">Potência</string>
     <string name="registrar_consumo">Registrar Consumo</string>
     <string name="editar_consumo">Editar Consumo</string>
+    <string name="api_registro_sucesso">Sucesso ao registrar na API</string>
 </resources>

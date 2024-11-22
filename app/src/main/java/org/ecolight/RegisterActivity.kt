@@ -14,6 +14,11 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import org.ecolight.api.RetrofitClient
+import org.ecolight.models.Usuario
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var goBackButton2: ImageButton
@@ -58,6 +63,7 @@ class RegisterActivity : AppCompatActivity() {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
+                    registerOnApi(email, password)
                     updateUI(user)
                 } else {
                     errorTextView.setBackgroundColor(Color.parseColor("#f76f7d"))
@@ -75,6 +81,7 @@ class RegisterActivity : AppCompatActivity() {
 
             val intent = Intent(this, ProfileActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 
@@ -96,5 +103,30 @@ class RegisterActivity : AppCompatActivity() {
             errorTextView.text = getString(R.string.preencha_todos_campos)
             errorTextView.isVisible = true
         }
+    }
+
+    private fun registerOnApi(email: String, password: String) {
+        val nome = email.substringBefore("@")
+        val usuario = Usuario(nome, email, password)
+
+        RetrofitClient.apiService.registrarUsuario(usuario).enqueue(object : Callback<Void> {
+            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                if (response.isSuccessful) {
+                    errorTextView.setBackgroundColor(Color.parseColor("#96ff9d"))
+                    errorTextView.text = getString(R.string.api_registro_sucesso)
+                    errorTextView.isVisible = true
+                } else {
+                    errorTextView.setBackgroundColor(Color.parseColor("#f76f7d"))
+                    errorTextView.text = "Erro ao registrar na API: ${response.code()}"
+                    errorTextView.isVisible = true
+                }
+            }
+
+            override fun onFailure(call: Call<Void>, t: Throwable) {
+                errorTextView.setBackgroundColor(Color.parseColor("#f76f7d"))
+                errorTextView.text = "Erro de conexão com a API: ${t.message}"
+                errorTextView.isVisible = true
+            }
+        })
     }
 }
