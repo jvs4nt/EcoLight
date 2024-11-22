@@ -10,7 +10,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class HomeActivity : AppCompatActivity() {
-    private lateinit var goBackMenuButton: ImageButton
     private lateinit var registrarConsumoButton: ImageButton
     private lateinit var textView9: TextView
     private lateinit var profileButton: ImageButton
@@ -27,8 +26,6 @@ class HomeActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        goBackMenuButton = findViewById(R.id.goBackMenuButton)
         registrarConsumoButton = findViewById(R.id.registrarConsumoButton)
         textView9 = findViewById(R.id.textView9)
         profileButton = findViewById(R.id.profileButton)
@@ -36,10 +33,6 @@ class HomeActivity : AppCompatActivity() {
         meuPerfilButton = findViewById(R.id.meuPerfilButton)
         listaDispositivosButton = findViewById(R.id.listaDispositivosButton)
 
-        goBackMenuButton.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-        }
 
         registrarConsumoButton.setOnClickListener {
             val intent = Intent(this, ConsumptionRegisterActivity::class.java)

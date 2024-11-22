@@ -33,19 +33,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.511" />
 
-        <ImageButton
-            android:id="@+id/goBackMenuButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:backgroundTint="@android:color/transparent"
-            android:contentDescription="TODO"
-            android:src="@drawable/icons8_arrow_50_black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.523" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
