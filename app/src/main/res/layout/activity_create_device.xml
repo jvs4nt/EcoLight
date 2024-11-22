@@ -5,95 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mainLayout"
-        android:layout_width="400dp"
-        android:layout_height="573dp"
-        android:background="#FFFFFF"
-        android:backgroundTint="#F4F5F9"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBar"
-        app:layout_constraintVertical_bias="0.013">
-
-        <Button
-            android:id="@+id/editarPerfilButton"
-            android:layout_width="361dp"
-            android:layout_height="71dp"
-            android:backgroundTint="#6CC51D"
-            android:text="Editar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.808" />
-
-        <EditText
-            android:id="@+id/nameEditText"
-            android:layout_width="377dp"
-            android:layout_height="60dp"
-            android:background="#FFFFFF"
-            android:backgroundTint="#FFFFFF"
-            android:ems="10"
-            android:fontFamily="@font/poppins_light"
-            android:hint="Digite seu nome"
-            android:inputType="text"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.517"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.459" />
-
-        <Button
-            android:id="@+id/logoutButton"
-            android:layout_width="361dp"
-            android:layout_height="68dp"
-            android:backgroundTint="#FF0303"
-            android:text="Sair"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.968" />
-
-        <EditText
-            android:id="@+id/emailEditText"
-            android:layout_width="377dp"
-            android:layout_height="60dp"
-            android:background="#FFFFFF"
-            android:backgroundTint="#FDFCFC"
-            android:ems="10"
-            android:fontFamily="@font/poppins_light"
-            android:hint="seuemail@email.com"
-            android:inputType="text"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.517"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.605" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="220dp"
-            android:layout_height="198dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.041"
-            app:srcCompat="@drawable/box3" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".CreateDeviceActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/navBar"
@@ -146,6 +58,71 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="406dp"
+        android:layout_height="585dp"
+        android:layout_marginTop="4dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#F4F5F9"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBar"
+        app:layout_constraintVertical_bias="0.0">
+
+        <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="377dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            android:ems="10"
+            android:fontFamily="@font/poppins_light"
+            android:hint="@string/nome_do_dispositivo"
+            android:inputType="text"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.482"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03" />
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="381dp"
+            android:layout_height="68dp"
+            android:backgroundTint="#6CC51D"
+            android:text="@string/salvar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.56"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.323" />
+
+        <EditText
+            android:id="@+id/powerEditText"
+            android:layout_width="377dp"
+            android:layout_height="60dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#FDFCFC"
+            android:ems="10"
+            android:fontFamily="@font/poppins_light"
+            android:hint="@string/potencia"
+            android:inputType="text"
+            android:padding="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.448"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.171" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appBar"
         android:layout_width="414dp"
         android:layout_height="72dp"
@@ -155,6 +132,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/editarPerfilTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/registrar_consumo"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.511" />
 
         <ImageButton
             android:id="@+id/goBackMenuButton"

@@ -30,5 +30,28 @@
             android:text="Power: 100W"
             android:textSize="16sp"
             android:textColor="@color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/editItemButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#1F9000"
+                android:text="Editar" />
+
+            <Button
+                android:id="@+id/deleteItemButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#960000"
+                android:text="Apagar" />
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.cardview.widget.CardView>

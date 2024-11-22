@@ -5,12 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".EditDeviceActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/mainLayout"
-        android:layout_width="400dp"
-        android:layout_height="573dp"
+        android:layout_width="406dp"
+        android:layout_height="585dp"
+        android:layout_marginTop="4dp"
         android:background="#FFFFFF"
         android:backgroundTint="#F4F5F9"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,20 +19,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appBar"
-        app:layout_constraintVertical_bias="0.013">
-
-        <Button
-            android:id="@+id/editarPerfilButton"
-            android:layout_width="361dp"
-            android:layout_height="71dp"
-            android:backgroundTint="#6CC51D"
-            android:text="Editar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.808" />
+        app:layout_constraintVertical_bias="0.0">
 
         <EditText
             android:id="@+id/nameEditText"
@@ -41,58 +29,88 @@
             android:backgroundTint="#FFFFFF"
             android:ems="10"
             android:fontFamily="@font/poppins_light"
-            android:hint="Digite seu nome"
+            android:hint="@string/nome_do_dispositivo"
             android:inputType="text"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.517"
+            app:layout_constraintHorizontal_bias="0.482"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.459" />
+            app:layout_constraintVertical_bias="0.03" />
 
         <Button
-            android:id="@+id/logoutButton"
-            android:layout_width="361dp"
+            android:id="@+id/saveButton"
+            android:layout_width="381dp"
             android:layout_height="68dp"
-            android:backgroundTint="#FF0303"
-            android:text="Sair"
+            android:backgroundTint="#6CC51D"
+            android:text="@string/salvar"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
+            app:layout_constraintHorizontal_bias="0.56"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.968" />
+            app:layout_constraintVertical_bias="0.323" />
 
         <EditText
-            android:id="@+id/emailEditText"
+            android:id="@+id/powerEditText"
             android:layout_width="377dp"
             android:layout_height="60dp"
             android:background="#FFFFFF"
             android:backgroundTint="#FDFCFC"
             android:ems="10"
             android:fontFamily="@font/poppins_light"
-            android:hint="seuemail@email.com"
+            android:hint="@string/potencia"
             android:inputType="text"
             android:padding="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.517"
+            app:layout_constraintHorizontal_bias="0.448"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.605" />
+            app:layout_constraintVertical_bias="0.171" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="220dp"
-            android:layout_height="198dp"
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appBar"
+        android:layout_width="414dp"
+        android:layout_height="72dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/editarConsumoTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/editar_consumo"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.041"
-            app:srcCompat="@drawable/box3" />
+            app:layout_constraintVertical_bias="0.511" />
 
+        <ImageButton
+            android:id="@+id/goBackMenuButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:backgroundTint="@android:color/transparent"
+            android:contentDescription="TODO"
+            android:src="@drawable/icons8_arrow_50_black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.044"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.523" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -143,31 +161,5 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.529"
             app:srcCompat="@drawable/user" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/appBar"
-        android:layout_width="414dp"
-        android:layout_height="72dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <ImageButton
-            android:id="@+id/goBackMenuButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:backgroundTint="@android:color/transparent"
-            android:contentDescription="TODO"
-            android:src="@drawable/icons8_arrow_50_black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.044"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.523" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

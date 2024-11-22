@@ -24,4 +24,7 @@
     <string name="registro_sucesso">Sucesso ao registrar</string>
     <string name="senhas_nao_coincidem">As senhas não coincidem</string>
     <string name="preencha_todos_campos">Por favor, preencha todos os campos</string>
+    <string name="potencia">Potência</string>
+    <string name="registrar_consumo">Registrar Consumo</string>
+    <string name="editar_consumo">Editar Consumo</string>
 </resources>

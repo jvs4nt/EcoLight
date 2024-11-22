@@ -103,7 +103,7 @@
             app:layout_constraintVertical_bias="0.321" />
 
         <EditText
-            android:id="@+id/telefoneEditText"
+            android:id="@+id/telEditText"
             android:layout_width="377dp"
             android:layout_height="60dp"
             android:background="#FFFFFF"

@@ -1,6 +1,7 @@
 package org.ecolight.models
 
 data class Device(
-    val name: String,
-    val power: String
+    var id: String? = null,
+    var name: String? = null,
+    var power: String? = null
 )
