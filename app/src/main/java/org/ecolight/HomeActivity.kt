@@ -99,14 +99,14 @@ class HomeActivity : AppCompatActivity() {
                             val meta = response.body()
                             if (meta != null) {
                                 val intent = Intent(this@HomeActivity, EditGoalActivity::class.java)
-                                intent.putExtra("META_ID", meta.id.toString()) // Passar como String
+                                intent.putExtra("META_ID", meta.id.toString())
                                 intent.putExtra("VALOR_META", meta.valorMeta)
                                 startActivity(intent)
                             } else {
                                 Toast.makeText(this@HomeActivity, "Meta não encontrada", Toast.LENGTH_SHORT).show()
                             }
                         } else {
-                            Toast.makeText(this@HomeActivity, "Erro ao carregar meta", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@HomeActivity, "Tente novamente!", Toast.LENGTH_SHORT).show()
                         }
                     }
 
@@ -145,7 +145,7 @@ class HomeActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<Meta>, t: Throwable) {
-                Toast.makeText(this@HomeActivity, "Erro de conexão: ${t.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@HomeActivity, "Tente novamente!", Toast.LENGTH_SHORT).show()
                 titleMetaTextView.text = "..."
                 userMeta = null // Resetar a meta
                 Log.e("HomeActivity", "Erro ao carregar meta", t)

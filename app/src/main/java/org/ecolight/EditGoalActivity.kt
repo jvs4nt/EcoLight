@@ -95,7 +95,7 @@ class EditGoalActivity : AppCompatActivity() {
                     val errorBody = response.errorBody()?.string()
                     Toast.makeText(
                         this@EditGoalActivity,
-                        "Erro ao atualizar meta: ${response.code()} - ${errorBody ?: "Sem detalhes"}",
+                        "Tente novamente",
                         Toast.LENGTH_LONG
                     ).show()
                     Log.e("EditGoalActivity", "Erro ao atualizar meta: ${response.code()} - $errorBody")
