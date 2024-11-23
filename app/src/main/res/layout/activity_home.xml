@@ -167,16 +167,31 @@
 
         <ImageButton
             android:id="@+id/editGoalImageButton"
-            android:layout_width="70dp"
-            android:layout_height="60dp"
+            android:layout_width="59dp"
+            android:layout_height="52dp"
             android:backgroundTint="@android:color/transparent"
+            android:contentDescription="TODO"
             app:layout_constraintBottom_toTopOf="@+id/meuConsumoButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.981"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.73"
+            app:layout_constraintVertical_bias="0.878"
             app:srcCompat="@drawable/image_4" />
+
+        <ImageButton
+            android:id="@+id/refreshImageButton"
+            android:layout_width="59dp"
+            android:layout_height="52dp"
+            android:backgroundTint="@android:color/transparent"
+            android:contentDescription="TODO"
+            app:layout_constraintBottom_toTopOf="@+id/meuConsumoButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.981"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.406"
+            app:srcCompat="@drawable/icons8_actualizar_30" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

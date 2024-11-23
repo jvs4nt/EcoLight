@@ -23,14 +23,14 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/consumptionRecyclerView"
-            android:layout_width="396dp"
-            android:layout_height="498dp"
+            android:layout_width="392dp"
+            android:layout_height="489dp"
             android:padding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintVertical_bias="0.954"
             tools:listitem="@layout/item_device_card" />
 
         <LinearLayout
@@ -69,32 +69,6 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/metaTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="Meta:"
-            app:layout_constraintBottom_toTopOf="@+id/consumptionRecyclerView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.043"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.670" />
-
-        <TextView
-            android:id="@+id/valorMetaTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:text="Calcular"
-            app:layout_constraintBottom_toTopOf="@+id/consumptionRecyclerView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.172"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.670" />
-
-        <TextView
             android:id="@+id/impostoTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -105,7 +79,7 @@
             app:layout_constraintHorizontal_bias="0.061"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.987" />
+            app:layout_constraintVertical_bias="0.736" />
 
         <TextView
             android:id="@+id/valorImpostoTextView"
@@ -114,10 +88,10 @@
             android:text="Calcular"
             app:layout_constraintBottom_toTopOf="@+id/consumptionRecyclerView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.092"
+            app:layout_constraintHorizontal_bias="0.06"
             app:layout_constraintStart_toEndOf="@+id/impostoTextView"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.987" />
+            app:layout_constraintVertical_bias="0.736" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

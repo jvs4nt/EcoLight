@@ -2,6 +2,7 @@ package org.ecolight
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -72,23 +73,29 @@ class GoalRegisterActivity : AppCompatActivity() {
             usuarioEmail = usuarioEmail
         )
 
+        Log.d("GoalRegisterActivity", "Meta enviada: $meta")
+
         RetrofitClient.apiService.registrarMeta(meta).enqueue(object : Callback<Void> {
             override fun onResponse(call: Call<Void>, response: Response<Void>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@GoalRegisterActivity, "Meta registrada com sucesso", Toast.LENGTH_SHORT).show()
                     goalEditText.text.clear()
                 } else {
+                    val errorBody = response.errorBody()?.string()
                     Toast.makeText(
                         this@GoalRegisterActivity,
                         "Erro ao registrar meta: ${response.code()}",
                         Toast.LENGTH_SHORT
                     ).show()
+                    Log.e("GoalRegisterActivity", "Erro ao registrar meta: ${response.code()} - $errorBody")
                 }
             }
 
             override fun onFailure(call: Call<Void>, t: Throwable) {
                 Toast.makeText(this@GoalRegisterActivity, "Erro de conexão: ${t.message}", Toast.LENGTH_SHORT).show()
+                Log.e("GoalRegisterActivity", "Erro de conexão ao registrar meta", t)
             }
         })
     }
+
 }

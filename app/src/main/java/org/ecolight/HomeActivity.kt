@@ -16,7 +16,6 @@ import org.ecolight.models.Meta
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.Console
 
 class HomeActivity : AppCompatActivity() {
     private lateinit var registrarConsumoButton: ImageButton
@@ -26,8 +25,11 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var meuPerfilButton: ImageButton
     private lateinit var listaDispositivosButton: ImageButton
     private lateinit var editGoalImageButton: ImageButton
+    private lateinit var refreshImageButton: ImageButton
 
     private lateinit var auth: FirebaseAuth
+
+    private var userMeta: Meta? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +50,7 @@ class HomeActivity : AppCompatActivity() {
         meuPerfilButton = findViewById(R.id.meuPerfilButton)
         listaDispositivosButton = findViewById(R.id.listaDispositivosButton)
         editGoalImageButton = findViewById(R.id.editGoalImageButton)
+        refreshImageButton = findViewById(R.id.refreshImageButton)
 
         registrarConsumoButton.setOnClickListener {
             val intent = Intent(this, ConsumptionRegisterActivity::class.java)
@@ -55,8 +58,12 @@ class HomeActivity : AppCompatActivity() {
         }
 
         titleMetaTextView.setOnClickListener {
-            val intent = Intent(this, GoalRegisterActivity::class.java)
-            startActivity(intent)
+            if (userMeta == null) {
+                val intent = Intent(this, GoalRegisterActivity::class.java)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Você já registrou uma meta!", Toast.LENGTH_SHORT).show()
+            }
         }
 
         profileButton.setOnClickListener {
@@ -77,6 +84,10 @@ class HomeActivity : AppCompatActivity() {
         listaDispositivosButton.setOnClickListener {
             val intent = Intent(this, ListDevicesActivity::class.java)
             startActivity(intent)
+        }
+
+        refreshImageButton.setOnClickListener {
+            fetchUserGoal()
         }
 
         editGoalImageButton.setOnClickListener {
@@ -108,9 +119,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-
-
-
         fetchUserGoal()
     }
 
@@ -119,17 +127,19 @@ class HomeActivity : AppCompatActivity() {
 
         if (userEmail.isNullOrEmpty()) {
             titleMetaTextView.text = "Meta não definida"
+            userMeta = null // Resetar a meta
             return
         }
 
         RetrofitClient.apiService.getMetaByEmail(userEmail).enqueue(object : Callback<Meta> {
             override fun onResponse(call: Call<Meta>, response: Response<Meta>) {
                 if (response.isSuccessful) {
-                    val meta = response.body()
-                    titleMetaTextView.text = "R$${meta?.valorMeta ?: "Meta"}"
-                    Log.d("HomeActivity", "Meta carregada: ${meta?.valorMeta}")
+                    userMeta = response.body()
+                    titleMetaTextView.text = "R$${userMeta?.valorMeta ?: "Meta"}"
+                    Log.d("HomeActivity", "Meta carregada: ${userMeta?.valorMeta}")
                 } else {
                     titleMetaTextView.text = "..."
+                    userMeta = null // Resetar a meta
                     Log.e("HomeActivity", "Erro: ${response.errorBody()?.string()}")
                 }
             }
@@ -137,9 +147,10 @@ class HomeActivity : AppCompatActivity() {
             override fun onFailure(call: Call<Meta>, t: Throwable) {
                 Toast.makeText(this@HomeActivity, "Erro de conexão: ${t.message}", Toast.LENGTH_SHORT).show()
                 titleMetaTextView.text = "..."
+                userMeta = null // Resetar a meta
                 Log.e("HomeActivity", "Erro ao carregar meta", t)
             }
         })
     }
-
 }
+

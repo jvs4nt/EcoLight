@@ -25,7 +25,7 @@
             android:layout_width="361dp"
             android:layout_height="71dp"
             android:backgroundTint="#6CC51D"
-            android:text="Editar"
+            android:text="Salvar Nome"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.512"
